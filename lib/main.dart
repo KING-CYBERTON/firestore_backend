@@ -1,3 +1,4 @@
+import 'package:firestore_backend/Views/Form.dart';
 import 'package:firestore_backend/Views/Splash.dart';
 import 'package:firestore_backend/Views/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,7 +27,9 @@ void main() async {
     runApp(const MyApp());
   } else {
     await GoogleSignIn().signInSilently();
-    await Firebase.initializeApp().then((value) => Get.put(GetAuth()));
+    await Firebase.initializeApp().then((value) => Get.put(GetAuth()
+    
+    ));
     runApp(const MyApp());
   }
 }
@@ -49,6 +52,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/signup', page: () => const SignUpPage()),
         GetPage(name: '/Profile', page: () => UserProfileScreen()),
         GetPage(name: '/Welcome', page: () => WelcomePage()),
+        GetPage(name: '/Form', page: () => const ProfileTab() ),
       ],
       initialRoute: '/',
     );

@@ -26,11 +26,13 @@ class GetAuth extends GetxController {
 
   _initialScreen(User? user) {
     if (user == null) {
-      print('loged in');
+      
+      
       Get.offAllNamed('/login');
     } else {
       print(user.uid);
-      Get.offAllNamed('/Welcome');
+      Get.offAllNamed('/Profile');
+      print('loged in+ ${auth.currentUser!.uid}');
     }
   }
 

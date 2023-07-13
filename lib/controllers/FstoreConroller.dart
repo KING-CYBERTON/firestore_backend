@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +11,7 @@ class FireRepo extends GetxController {
   static FireRepo instance = Get.find();
 
   final _db = FirebaseFirestore.instance;
-  final uid = FirebaseAuth.instance.currentUser?.uid;
+  //final uid = FirebaseAuth.instance.currentUser?.uid;
 
   createUser(UserData user) async {
     await _db
@@ -26,11 +28,14 @@ class FireRepo extends GetxController {
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.redAccent.withOpacity(0.2),
           colorText: Colors.black);
-    });
-    Get.toNamed('/Homescreen');
+    }).whenComplete(() =>  Get.toNamed('Profile'));
+   
   }
 
   Future<UserData> getUserData(String email) async {
+      if (email == null) {
+    throw Exception('Email is null');
+  }
     final snapshot =
         await _db.collection('Users').where('email', isEqualTo: email).get();
     final userdetails =
@@ -45,14 +50,18 @@ class FireRepo extends GetxController {
         snapshot.docs.map((e) => UserData.fromSnapshot(e)).toList();
     return userdetails;
   }
+   
+   getUserDetais(){
+    var email = FirebaseAuth.instance.currentUser?.email;
+    if (email != null) {
+      return FireRepo().getUserData(email);
+      
+    } else {
+      Get.snackbar(
+        'error','login'
+      );
+    }
 
-  // Future<Map<String, dynamic>> getPeriodData(String email) async {
-  //   final userData = await FireRepo.instance.getUserData(email.toString());
-  //   final periodData = {
-  //     'startDate': userData.startDate,
-  //     'periodLength': userData.periodLength,
-  //     'periodCycle': userData.periodCycle,
-  //   };
-  //   return periodData;
-  // }
+   }
+
 }

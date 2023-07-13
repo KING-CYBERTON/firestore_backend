@@ -7,6 +7,7 @@ class UserData {
   int age;
   String biography;
   int no_of_trees;
+  String? email;
 
   UserData({
     this.id,
@@ -15,10 +16,12 @@ class UserData {
     required this.biography,
     required this.no_of_trees,
     required this.region,
+    this.email,
   });
 
   toJson() {
     return {
+      'email': email,
       'username': username,
       'age': age,
       'biography': biography,
@@ -32,11 +35,12 @@ class UserData {
     final json = document.data();
     return UserData(
       id: document.id,
-      username: json!['name'],
-      region: json!['region'],
+      username: json!['username'],
+      region: json['region'],
       age: json['age'],
       biography: json['biography'],
       no_of_trees: json['no_of_trees'],
+      email: json['email'] ?? '',
     );
   }
 }

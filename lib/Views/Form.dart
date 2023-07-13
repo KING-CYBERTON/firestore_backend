@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firestore_backend/Constraits/UserModel.dart';
 import 'package:firestore_backend/controllers/FstoreConroller.dart';
+// ignore_for_file: unused_element
+
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({Key? key}) : super(key: key);
@@ -22,16 +24,11 @@ class _ProfileTabState extends State<ProfileTab> {
   final _RegionController = TextEditingController();
   final _NTPController = TextEditingController();
   final _BioController = TextEditingController();
+  final controller = Get.put(FireRepo() );
 
   bool _isLoading = false;
 
-  final repo = Get.put(FireRepo());
 
-  @override
-  void initState() {
-    super.initState();
-    selectedDate = DateTime.now();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,90 +47,159 @@ class _ProfileTabState extends State<ProfileTab> {
       appBar: AppBar(
         title: Text('Profile'),
       ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                const SizedBox(height: 20.0),
-                const Text(
-                  'Profile',
-                  style: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
+      body: Center(
+        child: Container(
+       width: 350,
+              height: 600,
+              decoration: BoxDecoration(
+                image: const DecorationImage(
+                    image: AssetImage("assets/images/Splash.jpg"),
+                    fit: BoxFit.fill),
+                color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(
+                    blurRadius: 10,
+                    offset: Offset(1, 1),
+                    color: Color.fromARGB(255, 145, 56, 115),
+                  )
+                ],
+                border: Border.all(
+                  color: Color.fromARGB(255, 139, 51, 103),
+                  width: 2,
                 ),
-                const SizedBox(height: 20.0),
-                TextFormField(
-                  controller: _UsernameController,
-                  decoration: const InputDecoration(
-                    labelText: 'UserName',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your Username';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20.0),
-                TextFormField(
-                  controller: _AgeController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                TextFormField(
-                  controller: _RegionController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    labelText: 'Period length (in days)',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your period length';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20.0),
-                TextFormField(
-                  controller: _NTPController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    labelText: 'No of trees planted',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your NO of trees';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20.0),
-                TextFormField(
-                  controller: _BioController,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter Bio data',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a Bio data';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20.0),
-                ElevatedButton(
-                  onPressed: () {
-                    if (!_formKey.currentState!.validate()) return;
+                borderRadius: BorderRadius.circular(11),
+              ),
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Center(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      const SizedBox(height: 20.0),
+                      const Text(
+                        'Profile',
+                        style: TextStyle(color: Colors.greenAccent, fontSize: 32.0, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20.0),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.8),
+                          borderRadius: BorderRadius.circular(11),
+                        ),
+                        width: 300,
+                        
+                        child: TextFormField(
+                          
+                          controller: _UsernameController,
+                          decoration: const InputDecoration(
+                           fillColor: Colors.white,
+                            labelText: 'UserName',
+                            border: OutlineInputBorder(),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your Username';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
+                      Container(
+                         decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.8),
+                          borderRadius: BorderRadius.circular(11),
+                        ),
+                        width: 300,
+                        child: TextFormField(
+                          controller: _AgeController,
+                          decoration: const InputDecoration(
+                            labelText: 'Age',
+                            border: OutlineInputBorder(),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a you age';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
+                      Container(
+                         decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.8),
+                          borderRadius: BorderRadius.circular(11),
+                        ),
+                        width: 300,
+                        child: TextFormField(
+                          controller: _RegionController,
+                          decoration: const InputDecoration(
+                            labelText: 'Enter your region',
+                            border: OutlineInputBorder(),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your region';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
 
-                    final uid = FirebaseAuth.instance.currentUser?.uid;
+                      Container(
+                         decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.8),
+                          borderRadius: BorderRadius.circular(11),
+                        ),
+                        width: 300,
+                        child: TextFormField(
+                          controller: _NTPController,
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            labelText: 'No of trees planted',
+                            border: OutlineInputBorder(),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your NO of trees';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
+                      Container(
+                         decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.8),
+                          borderRadius: BorderRadius.circular(11),
+                        ),
+                        width: 300,
+                        child: TextFormField(
+                          controller: _BioController,
+                          decoration: const InputDecoration(
+                            labelText: 'Enter Bio data',
+                            border: OutlineInputBorder(),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a Bio data';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
+                      ElevatedButton(
+                        onPressed: () {
+                         
+                     if (!_formKey.currentState!.validate()) return;
+
+                    final email = FirebaseAuth.instance.currentUser?.email;
                     final user = UserData(
+                      email: email.toString(),
                       username: _UsernameController.text.trim(),
                       age: int.parse(_AgeController.text.trim()),
                       no_of_trees: int.parse(_NTPController.text.trim()),
@@ -141,12 +207,15 @@ class _ProfileTabState extends State<ProfileTab> {
                       biography: _BioController.text.trim(),
                     );
 
-                    FireRepo.instance.createUser(user);
-                    Get.offAllNamed('/Homescreen');
-                  },
-                  child: const Text('Save'),
-                ),
-              ]),
+                    controller.createUser(user);
+                      
+                        },
+                        child: const Text('Save'),
+                      ),
+                    ]),
+              ),
+            ),
+          ),
         ),
       ),
     );
