@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:firestore_backend/Views/Splash.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +8,8 @@ import 'package:firestore_backend/controllers/AuthController.dart';
 import 'package:firestore_backend/controllers/FstoreConroller.dart';
 
 class UserProfileScreen extends StatefulWidget {
+  const UserProfileScreen({super.key});
+
   @override
   _UserProfileScreenState createState() => _UserProfileScreenState();
 }
@@ -66,7 +67,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     )
                   ],
                   border: Border.all(
-                    color: Color.fromARGB(255, 139, 51, 103),
+                    color: const Color.fromARGB(255, 139, 51, 103),
                     width: 2,
                   ),
                   borderRadius: BorderRadius.circular(11),
@@ -83,8 +84,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       Container(
                         width: 300,
                         decoration: BoxDecoration(
-                          color:
-                              Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
+                          color: const Color.fromARGB(255, 46, 75, 61)
+                              .withOpacity(0.5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -98,7 +99,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         padding: const EdgeInsets.all(10),
                         child: Text(
                           userData.username,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -110,8 +111,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       Container(
                         width: 300,
                         decoration: BoxDecoration(
-                          color:
-                              Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
+                          color: const Color.fromARGB(255, 46, 75, 61)
+                              .withOpacity(0.5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -125,7 +126,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         padding: const EdgeInsets.all(10),
                         child: Text(
                           "Biograpy: ${userData.biography}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                           ),
@@ -135,8 +136,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       Container(
                         width: 300,
                         decoration: BoxDecoration(
-                          color:
-                              Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
+                          color: const Color.fromARGB(255, 46, 75, 61)
+                              .withOpacity(0.5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -150,7 +151,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         padding: const EdgeInsets.all(10),
                         child: Text(
                           "Region:  ${userData.region}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontStyle: FontStyle.italic,
@@ -166,7 +167,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             Container(
                               width: 300,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 46, 75, 61)
+                                color: const Color.fromARGB(255, 46, 75, 61)
                                     .withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
@@ -181,7 +182,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               padding: const EdgeInsets.all(10),
                               child: Text(
                                 "Age: ${userData.age}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                 ),
@@ -191,7 +192,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             Container(
                               width: 300,
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 46, 75, 61)
+                                color: const Color.fromARGB(255, 46, 75, 61)
                                     .withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
@@ -206,7 +207,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               padding: const EdgeInsets.all(10),
                               child: Text(
                                 "no_of_trees: ${userData.no_of_trees}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                 ),
@@ -222,7 +223,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           GetAuth.instance.logOut();
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.red,
+                          backgroundColor: Colors.red,
                           shadowColor: const Color.fromARGB(26, 81, 160, 180),
                         ),
                         child: Text(
@@ -257,19 +258,19 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     )
                   ],
                   border: Border.all(
-                    color: Color.fromARGB(255, 139, 51, 103),
+                    color: const Color.fromARGB(255, 139, 51, 103),
                     width: 2,
                   ),
                   borderRadius: BorderRadius.circular(11),
                 ),
                 child: Center(
                   child: Container(
-                    width: 200,
-                    color: Colors.white.withOpacity(0.8),
-                    child: Text(
+                    width: 300,
+                    color: Colors.white24.withOpacity(0.5),
+                    child: const Text(
                       "Welcome to tree life\n Please fill your profile details to continue ",
                       style: TextStyle(
-                          color: const Color.fromARGB(255, 10, 10, 10),
+                          color: Color.fromARGB(255, 10, 10, 10),
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
                     ),

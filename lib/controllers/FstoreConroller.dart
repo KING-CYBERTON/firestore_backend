@@ -1,11 +1,8 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firestore_backend/Constraits/UserModel.dart';
-import 'package:firestore_backend/controllers/AuthController.dart';
 
 class FireRepo extends GetxController {
   static FireRepo instance = Get.find();
@@ -23,19 +20,20 @@ class FireRepo extends GetxController {
               backgroundColor: Colors.greenAccent.withOpacity(0.2),
               colorText: Colors.black87),
         )
+        // ignore: body_might_complete_normally_catch_error
         .catchError((e) {
-      Get.snackbar('Error', 'Something went wrong',
+           Get.snackbar('Error', 'Something went wrong',
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.redAccent.withOpacity(0.2),
           colorText: Colors.black);
-    }).whenComplete(() =>  Get.toNamed('Profile'));
-   
+    }).whenComplete(() => Get.toNamed('Profile'));
+     
   }
 
   Future<UserData> getUserData(String email) async {
-      if (email == null) {
-    throw Exception('Email is null');
-  }
+    if (email == null) {
+      throw Exception('Email is null');
+    }
     final snapshot =
         await _db.collection('Users').where('email', isEqualTo: email).get();
     final userdetails =
@@ -50,18 +48,13 @@ class FireRepo extends GetxController {
         snapshot.docs.map((e) => UserData.fromSnapshot(e)).toList();
     return userdetails;
   }
-   
-   getUserDetais(){
+
+  getUserDetais() {
     var email = FirebaseAuth.instance.currentUser?.email;
     if (email != null) {
       return FireRepo().getUserData(email);
-      
     } else {
-      Get.snackbar(
-        'error','login'
-      );
+      Get.snackbar('error', 'login');
     }
-
-   }
-
+  }
 }

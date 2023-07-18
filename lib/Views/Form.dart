@@ -1,13 +1,11 @@
 // ignore_for_file: unused_element
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firestore_backend/Constraits/UserModel.dart';
 import 'package:firestore_backend/controllers/FstoreConroller.dart';
 // ignore_for_file: unused_element
-
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({Key? key}) : super(key: key);
@@ -24,11 +22,9 @@ class _ProfileTabState extends State<ProfileTab> {
   final _RegionController = TextEditingController();
   final _NTPController = TextEditingController();
   final _BioController = TextEditingController();
-  final controller = Get.put(FireRepo() );
+  final controller = Get.put(FireRepo());
 
-  bool _isLoading = false;
-
-
+  final bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,30 +41,30 @@ class _ProfileTabState extends State<ProfileTab> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
       ),
       body: Center(
         child: Container(
-       width: 350,
-              height: 600,
-              decoration: BoxDecoration(
-                image: const DecorationImage(
-                    image: AssetImage("assets/images/Splash.jpg"),
-                    fit: BoxFit.fill),
-                color: Colors.white,
-                boxShadow: const [
-                  BoxShadow(
-                    blurRadius: 10,
-                    offset: Offset(1, 1),
-                    color: Color.fromARGB(255, 145, 56, 115),
-                  )
-                ],
-                border: Border.all(
-                  color: Color.fromARGB(255, 139, 51, 103),
-                  width: 2,
-                ),
-                borderRadius: BorderRadius.circular(11),
-              ),
+          width: 350,
+          height: 600,
+          decoration: BoxDecoration(
+            image: const DecorationImage(
+                image: AssetImage("assets/images/Splash.jpg"),
+                fit: BoxFit.fill),
+            color: Colors.white,
+            boxShadow: const [
+              BoxShadow(
+                blurRadius: 10,
+                offset: Offset(1, 1),
+                color: Color.fromARGB(255, 145, 56, 115),
+              )
+            ],
+            border: Border.all(
+              color: const Color.fromARGB(255, 139, 51, 103),
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(11),
+          ),
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
@@ -79,7 +75,10 @@ class _ProfileTabState extends State<ProfileTab> {
                       const SizedBox(height: 20.0),
                       const Text(
                         'Profile',
-                        style: TextStyle(color: Colors.greenAccent, fontSize: 32.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.greenAccent,
+                            fontSize: 32.0,
+                            fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 20.0),
                       Container(
@@ -88,12 +87,10 @@ class _ProfileTabState extends State<ProfileTab> {
                           borderRadius: BorderRadius.circular(11),
                         ),
                         width: 300,
-                        
                         child: TextFormField(
-                          
                           controller: _UsernameController,
                           decoration: const InputDecoration(
-                           fillColor: Colors.white,
+                            fillColor: Colors.white,
                             labelText: 'UserName',
                             border: OutlineInputBorder(),
                           ),
@@ -107,7 +104,7 @@ class _ProfileTabState extends State<ProfileTab> {
                       ),
                       const SizedBox(height: 20.0),
                       Container(
-                         decoration: BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.8),
                           borderRadius: BorderRadius.circular(11),
                         ),
@@ -128,7 +125,7 @@ class _ProfileTabState extends State<ProfileTab> {
                       ),
                       const SizedBox(height: 20.0),
                       Container(
-                         decoration: BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.8),
                           borderRadius: BorderRadius.circular(11),
                         ),
@@ -148,9 +145,8 @@ class _ProfileTabState extends State<ProfileTab> {
                         ),
                       ),
                       const SizedBox(height: 20.0),
-
                       Container(
-                         decoration: BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.8),
                           borderRadius: BorderRadius.circular(11),
                         ),
@@ -172,7 +168,7 @@ class _ProfileTabState extends State<ProfileTab> {
                       ),
                       const SizedBox(height: 20.0),
                       Container(
-                         decoration: BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.8),
                           borderRadius: BorderRadius.circular(11),
                         ),
@@ -194,21 +190,20 @@ class _ProfileTabState extends State<ProfileTab> {
                       const SizedBox(height: 20.0),
                       ElevatedButton(
                         onPressed: () {
-                         
-                     if (!_formKey.currentState!.validate()) return;
+                          if (!_formKey.currentState!.validate()) return;
 
-                    final email = FirebaseAuth.instance.currentUser?.email;
-                    final user = UserData(
-                      email: email.toString(),
-                      username: _UsernameController.text.trim(),
-                      age: int.parse(_AgeController.text.trim()),
-                      no_of_trees: int.parse(_NTPController.text.trim()),
-                      region: _RegionController.text.trim(),
-                      biography: _BioController.text.trim(),
-                    );
+                          final email =
+                              FirebaseAuth.instance.currentUser?.email;
+                          final user = UserData(
+                            email: email.toString(),
+                            username: _UsernameController.text.trim(),
+                            age: int.parse(_AgeController.text.trim()),
+                            no_of_trees: int.parse(_NTPController.text.trim()),
+                            region: _RegionController.text.trim(),
+                            biography: _BioController.text.trim(),
+                          );
 
-                    controller.createUser(user);
-                      
+                          controller.createUser(user);
                         },
                         child: const Text('Save'),
                       ),

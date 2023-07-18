@@ -27,7 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
             width: 350,
             height: 600,
             decoration: BoxDecoration(
-              image: DecorationImage(
+              image: const DecorationImage(
                   image: AssetImage('assets/images/Splash.jpg'),
                   fit: BoxFit.fill),
               color: Colors.white,
@@ -39,7 +39,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 )
               ],
               border: Border.all(
-                color: Color.fromARGB(255, 139, 51, 103),
+                color: const Color.fromARGB(255, 139, 51, 103),
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(11),
@@ -86,10 +86,10 @@ class _SignUpPageState extends State<SignUpPage> {
                           passwordController.text.trim());
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.white10,
+                      backgroundColor: Colors.white10,
                       shadowColor: Colors.grey,
                     ),
-                    child: Text(
+                    child: const Text(
                       'Sign Up',
                       style: TextStyle(
                         fontSize: 18,

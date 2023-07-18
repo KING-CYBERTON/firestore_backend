@@ -11,8 +11,7 @@ class GetAuth extends GetxController {
   GoogleSignIn googleSignIn = GoogleSignIn();
 
   FirebaseAuth auth = FirebaseAuth.instance;
-  GoogleSignInAccount? _googleAcc;
-
+  
   @override
   void onReady() {
     super.onReady();

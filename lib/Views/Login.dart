@@ -42,7 +42,7 @@ class _LoginInPageState extends State<LoginInPage> {
                 )
               ],
               border: Border.all(
-                color: Color.fromARGB(255, 139, 51, 103),
+                color: const Color.fromARGB(255, 139, 51, 103),
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(11),
@@ -90,10 +90,10 @@ class _LoginInPageState extends State<LoginInPage> {
                         passwordController.text.trim());
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.white10,
-                    shadowColor: Color.fromARGB(26, 81, 160, 180),
+                    backgroundColor: Colors.white10,
+                    shadowColor: const Color.fromARGB(26, 81, 160, 180),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Log In',
                     style: TextStyle(
                       fontSize: 18,

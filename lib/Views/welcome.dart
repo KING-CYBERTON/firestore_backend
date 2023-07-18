@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class WelcomePage extends StatefulWidget {
+  const WelcomePage({super.key});
+
   @override
   _WelcomePageState createState() => _WelcomePageState();
 }
@@ -42,7 +44,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 color: Colors.pink.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
             borderRadius: BorderRadius.circular(10),
@@ -68,9 +70,9 @@ class _WelcomePageState extends State<WelcomePage> {
                   ],
                 ),
                 padding: const EdgeInsets.all(10),
-                child: Text(
+                child: const Text(
                   "Name",
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -120,9 +122,9 @@ class _WelcomePageState extends State<WelcomePage> {
                         ],
                       ),
                       padding: const EdgeInsets.all(10),
-                      child: Text(
+                      child: const Text(
                         "Bio data",
-                        style: const TextStyle(
+                        style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
@@ -137,8 +139,8 @@ class _WelcomePageState extends State<WelcomePage> {
                   GetAuth.instance.logOut();
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xfff43636),
-                  shadowColor: Color.fromARGB(26, 81, 160, 180),
+                  backgroundColor: const Color(0xfff43636),
+                  shadowColor: const Color.fromARGB(26, 81, 160, 180),
                 ),
                 child: Text(
                   'Log out',
