@@ -8,8 +8,6 @@ import 'package:firestore_backend/Constraits/UserModel.dart';
 import 'package:firestore_backend/controllers/AuthController.dart';
 import 'package:firestore_backend/controllers/FstoreConroller.dart';
 
-
-
 class UserProfileScreen extends StatefulWidget {
   @override
   _UserProfileScreenState createState() => _UserProfileScreenState();
@@ -18,7 +16,6 @@ class UserProfileScreen extends StatefulWidget {
 class _UserProfileScreenState extends State<UserProfileScreen> {
   late Future<UserData> _userDataFuture;
   final repo = Get.put(FireRepo());
-  
 
   final email = FirebaseAuth.instance.currentUser?.email;
 
@@ -30,33 +27,32 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-     
     return Scaffold(
-      appBar:AppBar(
-        title: const Text('Panda Profile'),
-            actions: [
-              IconButton(
-                      icon: const Icon(
-              Icons.edit,
-              color: Colors.white,
-                      ),
-                      onPressed: () {
-              Get.toNamed('/Profile');
-                      },
-                    ),]
+      appBar: AppBar(
+          title: const Text(
+            'Accont Profile',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(
+                Icons.edit,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Get.toNamed('/Form');
+              },
             ),
+          ]),
       body: FutureBuilder<UserData>(
         future: _userDataFuture,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final userData = snapshot.data!;
-            return 
-         
-             Center(
-        child: Container(
-                 width: 350,
-                 height: 600,
-                
+            return Center(
+              child: Container(
+                width: 350,
+                height: 600,
                 decoration: BoxDecoration(
                   image: const DecorationImage(
                       image: AssetImage("assets/images/Splash.jpg"),
@@ -77,7 +73,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 ),
                 child: SingleChildScrollView(
                   child: Column(
-                      
                     children: [
                       const SizedBox(height: 30),
                       const CircleAvatar(
@@ -85,11 +80,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         backgroundColor: Colors.transparent,
                         backgroundImage: AssetImage('assets/images/logo.png'),
                       ),
-                      
                       Container(
                         width: 300,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
+                          color:
+                              Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -112,35 +107,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                        Container(
-                              width: 300,
-                              decoration: BoxDecoration(
-                                 color: Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 2,
-                                    blurRadius: 5,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              padding: const EdgeInsets.all(10),
-                              child: Text(
-                                "Biograpy: ${userData.biography}",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                      
                       Container(
                         width: 300,
                         decoration: BoxDecoration(
-                           color: Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
+                          color:
+                              Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -153,7 +124,32 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         ),
                         padding: const EdgeInsets.all(10),
                         child: Text(
-                         "Region:  ${userData.region}",
+                          "Biograpy: ${userData.biography}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        width: 300,
+                        decoration: BoxDecoration(
+                          color:
+                              Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          "Region:  ${userData.region}",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -170,7 +166,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             Container(
                               width: 300,
                               decoration: BoxDecoration(
-                                 color: Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
+                                color: Color.fromARGB(255, 46, 75, 61)
+                                    .withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
@@ -182,7 +179,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                 ],
                               ),
                               padding: const EdgeInsets.all(10),
-                              child:  Text(
+                              child: Text(
                                 "Age: ${userData.age}",
                                 style: TextStyle(
                                   color: Colors.white,
@@ -194,7 +191,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             Container(
                               width: 300,
                               decoration: BoxDecoration(
-                                 color: Color.fromARGB(255, 46, 75, 61).withOpacity(0.5),
+                                color: Color.fromARGB(255, 46, 75, 61)
+                                    .withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
@@ -206,7 +204,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                 ],
                               ),
                               padding: const EdgeInsets.all(10),
-                              child:  Text(
+                              child: Text(
                                 "no_of_trees: ${userData.no_of_trees}",
                                 style: TextStyle(
                                   color: Colors.white,
@@ -215,14 +213,13 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               ),
                             ),
                             const SizedBox(height: 20),
-                          
                           ],
                         ),
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
-                          // GetAuth.instance.logOut();
+                          GetAuth.instance.logOut();
                         },
                         style: ElevatedButton.styleFrom(
                           primary: Colors.red,
@@ -240,12 +237,46 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   ),
                 ),
               ),
-      );
-
-
+            );
           } else if (snapshot.hasError) {
             print(snapshot.error.toString());
-            return Text("Error: ${snapshot.error}");
+            return Center(
+              child: Container(
+                width: 350,
+                height: 600,
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                      image: AssetImage("assets/images/Splash.jpg"),
+                      fit: BoxFit.fill),
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(
+                      blurRadius: 10,
+                      offset: Offset(1, 1),
+                      color: Color.fromARGB(255, 145, 56, 115),
+                    )
+                  ],
+                  border: Border.all(
+                    color: Color.fromARGB(255, 139, 51, 103),
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(11),
+                ),
+                child: Center(
+                  child: Container(
+                    width: 200,
+                    color: Colors.white.withOpacity(0.8),
+                    child: Text(
+                      "Welcome to tree life\n Please fill your profile details to continue ",
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 10, 10, 10),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+            );
           } else {
             return const Center(child: CircularProgressIndicator());
           }
@@ -254,6 +285,3 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     );
   }
 }
-
-
-
