@@ -40,9 +40,7 @@ class _ProfileTabState extends State<ProfileTab> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
+    
       body: Center(
         child: Container(
           width: 350,
