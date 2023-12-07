@@ -17,11 +17,12 @@ void main() async {
     await GoogleSignIn().signInSilently();
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-           apiKey: "AIzaSyAmOB_-8DIEIwJEOvrM2a8C6RE-KbvSDDc",
-          projectId: "educative-9",
-          storageBucket: "educative-9.appspot.com",
-          messagingSenderId: "14205101883",
-           appId: "1:14205101883:web:49043452fcfe80de10791e",
+        apiKey: "{{API_Key}}",
+        projectId: "{{projectId}}",
+        storageBucket: "{{storageBucket}}",
+        databaseURL: "{{databaseURL}}",
+        messagingSenderId: "{{messagingSenderId}}",
+        appId: "{{appId}}",
           ),
     ).then((value) => Get.put(GetAuth()));
     runApp(const MyApp());
